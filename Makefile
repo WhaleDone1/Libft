@@ -6,7 +6,7 @@
 #    By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 14:06:07 by bcarpent          #+#    #+#              #
-#    Updated: 2024/03/05 14:19:15 by bcarpent         ###   ########.fr        #
+#    Updated: 2024/03/05 15:41:52 by bcarpent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,21 +36,31 @@ SRCS =	$(LIBFT_DIR)/ft_atoi.c $(LIBFT_DIR)/ft_itoa.c $(LIBFT_DIR)/ft_bzero.c \
 OBJS = ${SRCS:.c=.o}
 DEPS = ${OBJS:.o=.d}
 
+GREEN_COLOR = "\033[32m"
+CYAN_COLOR = "\033[36m"
+BLUE_COLOR = "\033[34m"
+X = "\033[0m"
+BOLD = "\033[1m"
+
 all: ${NAME}
 
 -include ${DEPS}
 
 ${NAME}: ${OBJS}
-	ar rcs ${NAME} ${OBJS}
+	@echo $(BOLD)$(GREEN_COLOR)Compiling the following files:$(X)$(CYAN_COLOR)[$(SRCS)]$(X) 
+	@ar rcs ${NAME} ${OBJS}
+	@echo $(BOLD)$(GREEN_COLOR)Compilation done.
 
 %.o : %.c
-	${CC} ${FLAGS} -MMD -MP -o $@ -c $< -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(PRINTF_DIR)
+	@${CC} ${FLAGS} -MMD -MP -o $@ -c $< -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(PRINTF_DIR)
 
 clean :
-	rm -f ${OBJS} ${DEPS}
+	@rm -f ${OBJS} ${DEPS}
+	@echo $(BOLD)$(GREEN_COLOR)Cleaning the following files: $(X)$(BLUE_COLOR)[$(SRCS)]$(X)
+	@echo $(BOLD)$(GREEN_COLOR)Cleaning done.
 
 fclean : clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
 
 re : fclean all
 
