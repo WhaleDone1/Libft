@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:21:48 by barpent           #+#    #+#             */
-/*   Updated: 2024/01/02 10:58:06 by bcarpent         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:20:26 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *pointeur, size_t n)
 {
-	size_t	i;
+	unsigned int	i;
 	unsigned char	*str;
 
 	i = 0;
